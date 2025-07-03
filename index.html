@@ -1,102 +1,241 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Portfólio de Tiago</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tiago | Desenvolvedor Front-End</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0; padding: 0;
-      background: #f3f3f3;
-      color: #222;
+    :root {
+      --primary: #2563eb;
+      --accent: #3b82f6;
+      --bg-main: #ffffff;
+      --text: #1e293b;
+      --muted: #475569;
+      --white: #ffffff;
+      --shadow: rgba(0, 0, 0, 0.05);
     }
-    header {
-      background: #24292e;
-      color: #fff;
-      padding: 2rem 1rem;
-      text-align: center;
-    }
-    header img {
-      width: 120px;
-      border-radius: 50%;
-      margin-bottom: 1rem;
-      border: 4px solid #fff;
-      background: #ddd;
-    }
-    main {
-      max-width: 800px;
-      margin: 2rem auto;
-      background: #fff;
-      border-radius: 10px;
-      padding: 2rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    h2 {
-      color: #0366d6;
-      margin-top: 2rem;
-    }
-    .projetos {
-      list-style: none;
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
       padding: 0;
     }
-    .projetos li {
-      margin-bottom: 1.5rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid #eee;
+
+    html {
+      scroll-behavior: smooth;
     }
-    a {
-      color: #0366d6;
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      padding: 45px 20px 30px;
+      text-align: center;
+      color: white;
+      animation: fade-in 1s ease forwards;
+      opacity: 0;
+    }
+
+    header img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-bottom: 16px;
+      border: 3px solid white;
+    }
+
+    header h1 {
+      font-size: 2.3rem;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      color: #dbeafe;
+      margin-bottom: 16px;
+    }
+
+    nav {
+      margin-top: 14px;
+      animation: slide-up 1s ease 0.5s forwards;
+      opacity: 0;
+    }
+
+    nav a {
+      margin: 0 12px;
+      color: #e0f2fe;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      font-size: 1rem;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0;
+      height: 2px;
+      background: white;
+      transition: width 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    section {
+      margin-top: 50px;
+      animation: fade-in 1s ease 0.8s forwards;
+      opacity: 0;
+      background: var(--white);
+      padding: 25px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px var(--shadow);
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      border-left: 5px solid var(--primary);
+      padding-left: 12px;
+    }
+
+    .sobre p {
+      max-width: 750px;
+      font-size: 1.05rem;
+      color: var(--muted);
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 14px var(--shadow);
+      transform: translateY(20px);
+      opacity: 0;
+      animation: slide-up 0.8s ease forwards;
+      animation-delay: 1s;
+    }
+
+    .card h3 {
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 9px 16px;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: var(--primary);
+    }
+
+    .contato ul {
+      list-style: none;
+      margin-top: 10px;
+      padding-left: 0;
+    }
+
+    .contato li {
+      margin-bottom: 12px;
+      font-size: 1rem;
+    }
+
+    .contato a {
+      color: var(--primary);
       text-decoration: none;
     }
-    a:hover {
-      text-decoration: underline;
-    }
+
     footer {
       text-align: center;
-      padding: 2rem 1rem;
-      color: #888;
+      padding: 30px 20px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-top: 60px;
+    }
+
+    @keyframes fade-in {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slide-up {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
 <body>
+
   <header>
-    <img src="https://github.com/tiago903.png" alt="Foto de perfil do GitHub">
-    <h1>Olá, eu sou Tiago</h1>
-    <p>
-      <a href="https://github.com/tiago903" target="_blank">GitHub</a> &middot; 
-      <a href="mailto:seuemail@exemplo.com">E-mail</a>
-    </p>
+    <img src="https://github.com/tiago903.png" alt="Foto de perfil do GitHub" />
+    <h1>Tiago</h1>
+    <p>Desenvolvedor Front-end.</p>
+    <nav>
+      <a href="#sobre">Sobre</a>
+      <a href="#projeto">Projeto</a>
+      <a href="#contato">Contato</a>
+    </nav>
   </header>
-  <main>
-    <section>
-      <h2>Sobre mim</h2>
-      <p>
-        Estou sempre buscando aprender e evoluir na área de tecnologia. Tenho interesse em desenvolvimento de softwares e gosto de participar de projetos que trazem soluções inovadoras.
-      </p>
+
+  <main class="container">
+
+    <section id="sobre" class="sobre">
+      <h2 class="section-title">Sobre mim</h2>
+      <p>Sou um desenvolvedor front-end e possuo domínio em HTML, CSS e JavaScript.</p>
     </section>
-    <section>
-      <h2>Projetos em destaque</h2>
-      <ul class="projetos">
-        <li>
-          <strong><a href="#" target="_blank">Projeto Exemplo</a></strong><br>
-          Breve descrição do projeto, tecnologias utilizadas, propósito...
-        </li>
-        <li>
-          <strong><a href="#" target="_blank">Outro Projeto</a></strong><br>
-          Breve descrição do projeto, tecnologias utilizadas, propósito...
-        </li>
+
+    <section id="projeto" class="projetos">
+      <h2 class="section-title">Projeto em destaque</h2>
+      <div class="card">
+        <h3>Landing Page</h3>
+        <p>Landing page responsiva e minimalista desenvolvida com HTML e CSS puro. Foco em performance e legibilidade.</p>
+        <a class="btn" href="#" target="_blank">Ver projeto</a>
+      </div>
+    </section>
+
+    <section id="contato" class="contato">
+      <h2 class="section-title">Contato</h2>
+      <ul>
+        <li>Email: <a href="mailto:tiago@gmail.com">tiago@gmail.com</a></li>
+        <li>GitHub: <a href="https://github.com/usuario" target="_blank">github.com/tiago903</a></li>
       </ul>
     </section>
-    <section>
-      <h2>Contato</h2>
-      <p>
-        Sinta-se à vontade para entrar em contato comigo pelo <a href="mailto:seuemail@exemplo.com">e-mail</a> ou pelo <a href="https://github.com/tiago903" target="_blank">GitHub</a>.
-      </p>
-    </section>
+
   </main>
+
   <footer>
-    &copy; 2025 Tiago. Feito com ♥ e HTML.
+    &copy; 2025 Tiago. Desenvolvido com 💙.
   </footer>
+
 </body>
 </html>
